@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Cafe & Gaming | Console Gaming Lounge Premium Bone</title>
+    <meta name="description" content="Pixel Cafe & Gaming - Tempat mabar futuristik di Bone dengan pengalaman PlayStation lounge premium. PS3, PS4, PS5 VIP Room, Rental Playbox.">
+    <meta name="keywords" content="Gaming Cafe Bone, Tempat Mabar Bone, PlayStation Cafe Watampone, VIP Room Gaming Bone, Pixel Cafe Gaming">
+    <meta name="author" content="Pixel Cafe & Gaming">
+    <meta property="og:title" content="Pixel Cafe & Gaming | Console Gaming Lounge Premium">
+    <meta property="og:description" content="Tempat mabar futuristik di Bone dengan pengalaman PlayStation lounge premium.">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'pixel-dark': '#121212',
+                        'pixel-charcoal': '#1E1E1E',
+                        'pixel-gray': '#2A2A2A',
+                        'pixel-purple': '#BC13FE',
+                        'pixel-cyan': '#00E5FF',
+                        'pixel-white': '#EAEAEA',
+                        'pixel-muted': '#888888'
+                    },
+                    fontFamily: {
+                        'orbitron': ['Orbitron', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #121212; color: #EAEAEA; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1E1E1E; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #BC13FE, #00E5FF); border-radius: 4px; }
+        .neon-text-purple { text-shadow: 0 0 5px #BC13FE, 0 0 10px #BC13FE, 0 0 20px #BC13FE; }
+        .neon-text-cyan { text-shadow: 0 0 5px #00E5FF, 0 0 10px #00E5FF, 0 0 20px #00E5FF; }
+        .glass { background: rgba(30, 30, 30, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(188, 19, 254, 0.1); }
+        .glass-strong { background: rgba(18, 18, 18, 0.9); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); }
+        .gradient-bg { background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #121212 100%); }
+        .hover-neon { transition: all 0.3s ease; }
+        .hover-neon:hover { box-shadow: 0 0 20px rgba(188, 19, 254, 0.5), 0 0 40px rgba(0, 229, 255, 0.3); transform: translateY(-5px); }
+        .btn-primary { background: linear-gradient(135deg, #BC13FE, #8B00FF); border: none; position: relative; overflow: hidden; transition: all 0.3s ease; }
+        .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease; }
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:hover { box-shadow: 0 0 30px rgba(188, 19, 254, 0.6); transform: scale(1.05); }
+        .btn-secondary { background: transparent; border: 2px solid #00E5FF; color: #00E5FF; transition: all 0.3s ease; }
+        .btn-secondary:hover { background: rgba(0, 229, 255, 0.1); box-shadow: 0 0 30px rgba(0, 229, 255, 0.5); }
+        .card-gaming { background: linear-gradient(145deg, #1E1E1E, #2A2A2A); border: 1px solid rgba(188, 19, 254, 0.2); transition: all 0.3s ease; }
+        .card-gaming:hover { border-color: #BC13FE; box-shadow: 0 0 30px rgba(188, 19, 254, 0.3); }
+        #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #121212; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .loading-screen.hidden { opacity: 0; visibility: hidden; }
+        .loading-logo { width: 120px; height: 120px; animation: pulse 1s ease-in-out infinite; }
+        .cursor-glow { position: fixed; width: 300px; height: 300px; background: radial-gradient(circle, rgba(188, 19, 254, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0; transform: translate(-50%, -50%); }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .seat-card { position: relative; overflow: hidden; }
+        .filter-btn.active { background: linear-gradient(135deg, #BC13FE, #00E5FF); color: white; }
+        .insta-grid img { transition: all 0.3s ease; }
+        .insta-grid img:hover { transform: scale(1.05); filter: brightness(1.2); }
+        .neon-divider { height: 2px; background: linear-gradient(90deg, transparent, #BC13FE, #00E5FF, transparent); }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+        .mobile-menu.open { transform: translateX(0); }
+        .vip-badge { background: linear-gradient(135deg, #FFD700, #FFA500); color: #121212; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .bestseller-badge { background: linear-gradient(135deg, #BC13FE, #00E5FF); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; }
+        .price-tag { background: rgba(188, 19, 254, 0.2); border: 1px solid #BC13FE; color: #00E5FF; font-family: 'Orbitron', sans-serif; }
+        .map-container { position: relative; overflow: hidden; border-radius: 16px; border: 2px solid rgba(188, 19, 254, 0.3); }
+        .map-container iframe { width: 100%; height: 100%; border: none; }
+        .footer-line { height: 1px; background: linear-gradient(90deg, transparent, #BC13FE, #00E5FF, #BC13FE, transparent); }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(18, 18, 18, 0.7) 0%, rgba(18, 18, 18, 0.9) 100%); z-index: 0; }
+        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .animate-gradient { background-size: 200% 200%; animation: gradient 3s ease infinite; }
+        @media (max-width: 768px) { .hero-title { font-size: 2.5rem !important; } .section-title { font-size: 2rem !important; } }
+    </style>
+</head>
+<body class="bg-pixel-dark text-pixel-white antialiased">
+    <div id="loading-screen" class="loading-screen">
+        <div class="text-center">
+            <img src="pixel-logo.png" alt="Pixel Cafe Logo" class="loading-logo mx-auto mb-4 rounded-full">
+            <div class="font-orbitron text-pixel-purple text-xl animate-pulse">LOADING...</div>
+        </div>
+    </div>
+    <div id="cursor-glow" class="cursor-glow hidden md:block"></div>
+    <canvas id="particles-canvas"></canvas>
+    
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="glass-strong border-b border-pixel-purple/10">
+            <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+                <div class="flex items-center justify-between h-16 md:h-20">
+                    <a href="#" class="flex items-center space-x-3 group">
+                        <div class="relative">
+                            <img src="pixel-logo.png" alt="Pixel Cafe Logo" class="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-pixel-purple group-hover:border-pixel-cyan transition-colors duration-300">
+                            <div class="absolute inset-0 rounded-full border-2 border-pixel-cyan opacity-0 group-hover:opacity-100 animate-ping"></div>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-orbitron font-bold text-xs sm:text-sm md:text-base tracking-wider text-pixel-white leading-tight">PIXEL CAFE</span>
+                            <span class="font-orbitron text-[10px] sm:text-xs text-pixel-purple tracking-widest leading-tight">& GAMING</span>
+                        </div>
+                    </a>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#hero" class="nav-link font-inter text-sm text-pixel-white/80 hover:text-pixel-cyan transition-colors duration-300 relative group">Home<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pixel-purple to-pixel-cyan group-hover:w-full transition-all duration-300"></span></a>
+                        <a href="#seats" class="nav-link font-inter text-sm text-pixel-white/80 hover:text-pixel-cyan transition-colors duration-300 relative group">View Seat<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pixel-purple to-pixel-cyan group-hover:w-full transition-all duration-300"></span></a>
+                        <a href="#rental" class="nav-link font-inter text-sm text-pixel-white/80 hover:text-pixel-cyan transition-colors duration-300 relative group">Rental<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pixel-purple to-pixel-cyan group-hover:w-full transition-all duration-300"></span></a>
+                        <a href="#menu" class="nav-link font-inter text-sm text-pixel-white/80 hover:text-pixel-cyan transition-colors duration-300 relative group">Menu<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pixel-purple to-pixel-cyan group-hover:w-full transition-all duration-300"></span></a>
+                        <a href="#gallery" class="nav-link font-inter text-sm text-pixel-white/80 hover:text-pixel-cyan transition-colors duration-300 relative group">Gallery<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pixel-purple to-pixel-cyan group-hover:w-full transition-all duration-300"></span></a>
+                        <a href="#contact" class="nav-link font-inter text-sm text-pixel-white/80 hover:text-pixel-cyan transition-colors duration-300 relative group">Contact<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pixel-purple to-pixel-cyan group-hover:w-full transition-all duration-300"></span></a>
+                    </div>
+                    <div class="hidden md:block">
+                        <a href="https://wa.me/6285166073386" target="_blank" class="btn-primary px-6 py-2.5 rounded-full font-orbitron text-sm text-white flex items-center space-x-2"><i class="fab fa-whatsapp"></i><span>Book Now</span></a>
+                    </div>
+                    <button id="mobile-menu-btn" class="md:hidden text-pixel-white p-2"><i class="fas fa-bars text-xl"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-pixel-charcoal z-50 border-l border-pixel-purple/30">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-orbitron font-bold text-pixel-purple">MENU</span>
+                <button id="close-menu-btn" class="text-pixel-white"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="space-y-4">
+                <a href="#hero" class="block py-3 px-4 rounded-lg bg-pixel-dark/50 text-pixel-white hover:bg-pixel-purple/20 hover:text-pixel-cyan transition-all duration-300"><i class="fas fa-home mr-3"></i>Home</a>
+                <a href="#seats" class="block py-3 px-4 rounded-lg bg-pixel-dark/50 text-pixel-white hover:bg-pixel-purple/20 hover:text-pixel-cyan transition-all duration-300"><i class="fas fa-gamepad mr-3"></i>View Seat</a>
+                <a href="#rental" class="block py-3 px-4 rounded-lg bg-pixel-dark/50 text-pixel-white hover:bg-pixel-purple/20 hover:text-pixel-cyan transition-all duration-300"><i class="fas fa-box mr-3"></i>Rental Playbox</a>
+                <a href="#menu" class="block py-3 px-4 rounded-lg bg-pixel-dark/50 text-pixel-white hover:bg-pixel-purple/20 hover:text-pixel-cyan transition-all duration-300"><i class="fas fa-utensils mr-3"></i>Menu</a>
+                <a href="#gallery" class="block py-3 px-4 rounded-lg bg-pixel-dark/50 text-pixel-white hover:bg-pixel-purple/20 hover:text-pixel-cyan transition-all duration-300"><i class="fas fa-images mr-3"></i>Gallery</a>
+                <a href="#contact" class="block py-3 px-4 rounded-lg bg-pixel-dark/50 text-pixel-white hover:bg-pixel-purple/20 hover:text-pixel-cyan transition-all duration-300"><i class="fas fa-map-marker-alt mr-3"></i>Location</a>
+            </div>
+            <div class="mt-8">
+                <a href="https://wa.me/6285166073386" target="_blank" class="btn-primary w-full py-3 rounded-full font-orbitron text-white text-center block"><i class="fab fa-whatsapp mr-2"></i>Book Now</a>
+            </div>
+        </div>
+    </div>
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <img src="hero-bg.jpg" alt="Gaming Background" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-32">
+            <div class="max-w-5xl mx-auto text-center">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-pixel-purple/20 border border-pixel-purple/50 mb-8 animate-pulse">
+                    <span class="w-2 h-2 bg-pixel-cyan rounded-full animate-pulse"></span>
+                    <span class="font-inter text-sm text-pixel-cyan">Console Gaming Lounge Premium</span>
+                </div>
+                <h1 class="hero-title font-orbitron font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight">
+                    LEVEL UP YOUR
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-pixel-purple via-pixel-cyan to-pixel-purple animate-gradient">GAMING EXPERIENCE</span>
+                </h1>
+                <p class="font-inter text-lg md:text-xl text-pixel-white/70 max-w-2xl mx-auto mb-10">
+                    Tempat mabar futuristik di Bone dengan pengalaman PlayStation lounge premium. 
+                    <span class="text-pixel-purple">Bukan sekadar nongkrong. Ini markas gamer masa depan.</span>
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/6285166073386" target="_blank" class="btn-primary px-8 py-4 rounded-full font-orbitron text-white flex items-center space-x-3 w-full sm:w-auto justify-center">
+                        <i class="fab fa-whatsapp text-xl"></i><span>Booking Seat Now</span>
+                    </a>
+                    <a href="#seats" class="btn-secondary px-8 py-4 rounded-full font-orbitron flex items-center space-x-3 w-full sm:w-auto justify-center">
+                        <i class="fas fa-gamepad"></i><span>View Seat</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+                    <div class="glass rounded-xl p-4 hover-neon">
+                        <div class="font-orbitron text-2xl md:text-3xl font-bold text-pixel-cyan">5+</div>
+                        <div class="font-inter text-sm text-pixel-white/60">Gaming Station</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 hover-neon">
+                        <div class="font-orbitron text-2xl md:text-3xl font-bold text-pixel-purple">VIP</div>
+                        <div class="font-inter text-sm text-pixel-white/60">Private Room</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 hover-neon">
+                        <div class="font-orbitron text-2xl md:text-3xl font-bold text-pixel-cyan">20+</div>
+                        <div class="font-inter text-sm text-pixel-white/60">Menu Items</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 hover-neon">
+                        <div class="font-orbitron text-2xl md:text-3xl font-bold text-pixel-purple">24/7</div>
+                        <div class="font-inter text-sm text-pixel-white/60">Rental Service</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#seats" class="text-pixel-white/50 hover:text-pixel-cyan transition-colors"><i class="fas fa-chevron-down text-2xl"></i></a>
+        </div>
+    </section>
+
+    <section id="seats" class="relative py-20 md:py-32 gradient-bg">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <span class="inline-block px-4 py-1 rounded-full bg-pixel-purple/20 text-pixel-purple font-inter text-sm mb-4"><i class="fas fa-gamepad mr-2"></i>GAMING AREA</span>
+                    <h2 class="section-title font-orbitron font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4">PILIH <span class="text-transparent bg-clip-text bg-gradient-to-r from-pixel-purple to-pixel-cyan">STATION</span> ANDA</h2>
+                    <p class="font-inter text-pixel-white/60 max-w-2xl mx-auto">Semua area adalah smoking area. Nikmati pengalaman gaming premium dengan kenyamanan maksimal.</p>
+                    <div class="text-gray-500 text-sm mt-4"><i class="fas fa-smoking mr-1"></i> Smoking Area</div>
+                </div>
+                
+                <div class="mb-12 reveal">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center"><i class="fab fa-playstation text-2xl text-white"></i></div>
+                            <div>
+                                <h3 class="font-orbitron font-bold text-xl text-white">PS3 REGULER</h3>
+                                <p class="font-inter text-sm text-pixel-white/50">2 Unit Available</p>
+                            </div>
+                        </div>
+                        <div class="price-tag px-4 py-2 rounded-lg font-orbitron">5K / Jam</div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="seat-card card-gaming rounded-xl p-6 text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center"><span class="font-orbitron font-bold text-white">PS3</span></div>
+                            <h4 class="font-orbitron font-bold text-white mb-1">PS3-01</h4>
+                            <p class="font-inter text-sm text-pixel-white/50 mb-3">Available</p>
+                            <a href="https://wa.me/6285166073386?text=Halo%20Pixel%20Cafe,%20saya%20mau%20booking%20PS3-01" target="_blank" class="inline-flex items-center space-x-1 text-pixel-cyan hover:text-pixel-purple transition-colors text-sm"><i class="fab fa-whatsapp"></i><span>Book</span></a>
+                        </div>
+                        <div class="seat-card card-gaming rounded-xl p-6 text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center"><span class="font-orbitron font-bold text-white">PS3</span></div>
+                            <h4 class="font-orbitron font-bold text-white mb-1">PS3-02</h4>
+                            <p class="font-inter text-sm text-pixel-white/50 mb-3">Available</p>
+                            <a href="https://wa.me/6285166073386?text=Halo%20Pixel%20Cafe,%20saya%20mau%20booking%20PS3-02" target="_blank" class="inline-flex items-center space-x-1 text-pixel-cyan hover:text-pixel-purple transition-colors text-sm"><i class="fab fa-whatsapp"></i><span>Book</span></a>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-4 justify-center">
+                        <div class="glass px-4 py-2 rounded-lg"><span class="font-inter text-sm text-pixel-white/70"><i class="fas fa-clock mr-2 text-pixel-cyan"></i>1 Jam: <span class="text-pixel-cyan font-orbitron">5K</span></span></div>
+                        <div class="glass px-4 py-2 rounded-lg"><span class="font-inter text-sm text-pixel-white/70"><i class="fas fa-clock mr-2 text-pixel-purple"></i>3 Jam: <span class="text-pixel-purple font-orbitron">15K</span></span></div>
+                    </div>
+                </div>
+                
+                <div class="mb-12 reveal">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center"><i class="fab fa-playstation text-2xl text-white"></i></div>
+                            <div>
+                                <h3 class="font-orbitron font-bold text-xl text-white">PS4 REGULER</h3>
+                                <p class="font-inter text-sm text-pixel-white/50">3 Unit Available</p>
+                            </div>
+                        </div>
+                        <div class="price-tag px-4 py-2 rounded-lg font-orbitron">10K / Jam</div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="seat-card card-gaming rounded-xl p-6 text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center"><span class="font-orbitron font-bold text-white">PS4</span></div>
+                            <h4 class="font-orbitron font-bold text-white mb-1">PS4-01</h4>
+                            <p class="font-inter text-sm text-pixel-white/50 mb-3">Available</p>
+                            <a href="https://wa.me/6285166073386?text=Halo%20Pixel%20Cafe,%20saya%20mau%20booking%20PS4-01" target="_blank" class="inline-flex items-center space-x-1 text-pixel-cyan hover:text-pixel-purple transition-colors text-sm"><i class="fab fa-whatsapp"></i><span>Book</span></a>
+                        </div>
+                        <div class="seat-card card-gaming rounded-xl p-6 text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center"><span class="font-orbitron font-bold text-white">PS4</span></div>
+                            <h4 class="font-orbitron font-bold text-white mb-1">PS4-02</h4>
+                            <p class="font-inter text-sm text-pixel-white/50 mb-3">Available</p>
+                            <a href="https://wa.me/6285166073386?text=Halo%20Pixel%20Cafe,%20saya%20mau%20booking%20PS4-02" target="_blank" class="inline-flex items-center space-x-1 text-pixel-cyan hover:text-pixel-purple transition-colors text-sm"><i class="fab fa-whatsapp"></i><span>Book</span></a>
+                        </div>
+                        <div class="seat-card card-gaming rounded-xl p-6 text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center"><span class="font-orbitron font-bold text-white">PS4</span></div>
+                            <h4 class="font-orbitron font-bold text-white mb-1">PS4-03</h4>
+                            <p class="font-inter text-sm text-pixel-white/50 mb-3">Available</p>
+                            <a href="https://wa.me/6285166073386?text=Halo%20Pixel%20Cafe,%20saya%20mau%20booking%20PS4-03" target="_blank" class="inline-flex items-center space-x-1 text-pixel-cyan hover:text-pixel-purple transition-colors text-sm"><i class="fab fa-whatsapp"></i><span>Book</span></a>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-4 justify-center">
+                        <div class="glass px-4 py-2 rounded-lg"><span class="font-inter text-sm text-pixel-white/70"><i class="fas fa-clock mr-2 text-pixel-cyan"></i>1 Jam: <span class="text-pixel-cyan font-orbitron">10K</span></span></div>
+                        <div class="glass px-4 py-2 rounded-lg"><span class="font-inter text-sm text-pixel-white/70"><i class="fas fa-clock mr-2 text-pixel-purple"></i>3 Jam: <span class="text-pixel-purple font-orbitron">25K</span></span></div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                    <div class="vip-badge inline-block px-4 py-1 rounded-full text-xs mb-4"><i class="fas fa-crown mr-1"></i> PREMIUM EXPERIENCE</div>
+                    <div class="card-gaming rounded-2xl p-8 border-2 border-yellow-500/30 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-yellow-500/10 to-transparent rounded-full blur-3xl"></div>
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center"><i class="fas fa-crown text-2xl text-white"></i></div>
+                                    <div>
+                                        <h3 class="font-orbitron font-bold text-2xl text-white">VIP ROOM</h3>
+                                        <p class="font-inter text-sm text-yellow-400">Private Gaming Suite</p>
+                                    </div>
+                                </div>
+                                <p class="font-inter text-pixel-white/70 mb-6">Ruang gaming eksklusif dengan fasilitas premium untuk pengalaman gaming terbaik.</p>
+                                <div class="space-y-3 mb-6">
+                                    <div class="flex items-center space-x-3"><i class="fas fa-snowflake text-pixel-cyan"></i><span class="font-inter text-sm text-pixel-white/80">Full AC</span></div>
+                                    <div class="flex items-center space-x-3"><i class="fas fa-tv text-pixel-cyan"></i><span class="font-inter text-sm text-pixel-white/80">Netflix & YouTube</span></div>
+                                    <div class="flex items-center space-x-3"><i class="fas fa-door-closed text-pixel-cyan"></i><span class="font-inter text-sm text-pixel-white/80">Private Room</span></div>
+                                    <div class="flex items-center space-x-3"><i class="fas fa-gamepad text-pixel-cyan"></i><span class="font-inter text-sm text-pixel-white/80">PS4 & PS5 Available</span></div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="glass rounded-xl p-4 border border-yellow-500/30">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="font-orbitron text-white">PS4 VIP</span>
+                                        <span class="vip-badge px-2 py-0.5 rounded text-xs">POPULAR</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="space-x-4">
+                                            <span class="font-inter text-sm text-pixel-white/60">1 Jam: <span class="text-pixel-cyan font-orbitron">20K</span></span>
+                                            <span class="font-inter text-sm text-pixel-white/60">3 Jam: <span class="text-pixel-purple font-orbitron">50K</span></span>
+                                        </div>
+                                        <a href="https://wa.me/6285166073386?text=Halo%20Pixel%20Cafe,%20saya%20mau%20booking%20VIP%20PS4" target="_blank" class="btn-primary px-4 py-2 rounded-lg text-sm"><i class="fab fa-whatsapp mr-1"></i>Book</a>
+                                    </div>
+                                </div>
+                                <div class="glass rounded-xl p-4 border border-pixel-purple/30">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="font-orbitron text-white">PS5 VIP</span>
+                                        <span class="px-2 py-0.5 rounded text-xs bg-pixel-purple text-white">NEW</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="space-x-4">
+                                            <span class="font-inter text-sm text-pixel-white/60">1 Jam: <span class="text-pixel-cyan font-orbitron">25K</span></span>
+                                            <span class="font-inter text-sm text-pixel-white/60">3 Jam: <span class="text-pixel-purple font-orbitron">65K</span></span>
+                                        </div>
+                                        <a href="https://wa.me/6285166073386?text=Halo%20Pixel%20Cafe,%20saya%20mau%20booking%20VIP%20PS5" target="_blank" class="btn-primary px-4 py-2 rounded-lg text-sm"><i class="fab fa-whatsapp mr-1"></i>Book</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rental" class="relative py-20 md:py-32 bg-pixel-charcoal">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="reveal">
+                        <span class="inline-block px-4 py-1 rounded-full bg-pixel-cyan/20 text-pixel-cyan font-inter text-sm mb-4"><i class="fas fa-box mr-2"></i>RENTAL SERVICE</span>
+                        <h2 class="section-title font-orbitron font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-6">RENTAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-pixel-cyan to-pixel-purple">PLAYBOX PS3</span></h2>
+                        <p class="font-inter text-lg text-pixel-white/70 mb-6">Main game dimana saja dengan Rental Playbox PS3 dari Pixel Cafe. Bawa pengalaman gaming premium ke rumah Anda.</p>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start space-x-3"><div class="w-6 h-6 rounded-full bg-pixel-cyan/20 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-pixel-cyan text-xs"></i></div><p class="font-inter text-pixel-white/80">Console PS3 lengkap dengan controller</p></div>
+                            <div class="flex items-start space-x-3"><div class="w-6 h-6 rounded-full bg-pixel-cyan/20 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-pixel-cyan text-xs"></i></div><p class="font-inter text-pixel-white/80">Koleksi game terbaru dan klasik</p></div>
+                            <div class="flex items-start space-x-3"><div class="w-6 h-6 rounded-full bg-pixel-cyan/20 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-pixel-cyan text-xs"></i></div><p class="font-inter text-pixel-white/80">Delivery & pickup service</p></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="card-gaming rounded-xl p-4 text-center"><div class="font-orbitron text-3xl font-bold text-pixel-cyan mb-1">10K</div><div class="font-inter text-sm text-pixel-white/60">1 Jam</div></div>
+                            <div class="card-gaming rounded-xl p-4 text-center border-2 border-pixel-purple"><div class="font-orbitron text-3xl font-bold text-pixel-purple mb-1">110K</div><div class="font-inter text-sm text-pixel-white/60">24 Jam</div><span class="inline-block mt-1 px-2 py-0.5 bg-pixel-purple/20 text-pixel-purple text-xs rounded">BEST VALUE</span></div>
+                        </div>
+                        <div class="glass rounded-xl p-4 mb-6">
+                            <h4 class="font-orbitron text-sm text-pixel-white mb-2">Ketentuan:</h4>
+                            <ul class="space-y-1 text-sm text-pixel-white/60">
+                                <li><i class="fas fa-id-card mr-2 text-pixel-cyan"></i>Wajib jaminan KTP</li>
+                                <li><i class="fas fa-shield-alt mr-2 text-pixel-cyan"></i>Dilarang merusak fasilitas</li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/6285166073386?text=Halo%20Pixel%20Cafe,%20saya%20mau%20rental%20Playbox%20PS3" target="_blank" class="btn-primary px-8 py-4 rounded-full font-orbitron text-white inline-flex items-center space-x-3"><i class="fab fa-whatsapp text-xl"></i><span>Reserve Rental Now</span></a>
+                    </div>
+                    <div class="reveal">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-pixel-cyan to-pixel-purple rounded-2xl blur-2xl opacity-30"></div>
+                            <img src="gallery-3.jpg" alt="PlayStation Controllers" class="relative rounded-2xl w-full h-auto object-cover border border-pixel-purple/30">
+                            <div class="absolute -bottom-4 -left-4 glass rounded-xl p-4 border border-pixel-cyan/30">
+                                <div class="flex items-center space-x-2"><i class="fas fa-truck text-pixel-cyan"></i><span class="font-inter text-sm text-white">Free Delivery</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="menu" class="relative py-20 md:py-32 gradient-bg">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <span class="inline-block px-4 py-1 rounded-full bg-pixel-purple/20 text-pixel-purple font-inter text-sm mb-4"><i class="fas fa-utensils mr-2"></i>DIGITAL MENU</span>
+                    <h2 class="section-title font-orbitron font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4">FUEL YOUR <span class="text-transparent bg-clip-text bg-gradient-to-r from-pixel-purple to-pixel-cyan">GAME</span></h2>
+                    <p class="font-inter text-pixel-white/60 max-w-2xl mx-auto">Nikmati berbagai pilihan makanan dan minuman sambil bermain game favorit Anda.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-3 mb-12 reveal">
+                    <button class="filter-btn active px-6 py-2 rounded-full font-inter text-sm transition-all duration-300" data-filter="all">Semua</button>
+                    <button class="filter-btn px-6 py-2 rounded-full font-inter text-sm bg-pixel-dark border border-pixel-purple/30 text-pixel-white/70 hover:border-pixel-purple transition-all duration-300" data-filter="bestseller"><i class="fas fa-star mr-2"></i>Best Seller</button>
+                    <button class="filter-btn px-6 py-2 rounded-full font-inter text-sm bg-pixel-dark border border-pixel-purple/30 text-pixel-white/70 hover:border-pixel-purple transition-all duration-300" data-filter="coffee"><i class="fas fa-coffee mr-2"></i>Coffee</button>
+                    <button class="filter-btn px-6 py-2 rounded-full font-inter text-sm bg-pixel-dark border border-pixel-purple/30 text-pixel-white/70 hover:border-pixel-purple transition-all duration-300" data-filter="noncoffee"><i class="fas fa-glass-whiskey mr-2"></i>Non Coffee</button>
+                    <button class="filter-btn px-6 py-2 rounded-full font-inter text-sm bg-pixel-dark border border-pixel-purple/30 text-pixel-white/70 hover:border-pixel-purple transition-all duration-300" data-filter="snack"><i class="fas fa-cookie-bite mr-2"></i>Cemilan</button>
+                    <button class="filter-btn px-6 py-2 rounded-full font-inter text-sm bg-pixel-dark border border-pixel-purple/30 text-pixel-white/70 hover:border-pixel-purple transition-all duration-300" data-filter="food"><i class="fas fa-hamburger mr-2"></i>Makanan Berat</button>
+                </div>
+                <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="bestseller noncoffee">
+                        <div class="relative"><img src="menu-greentea.jpg" alt="Green Tea" class="w-full h-40 object-cover"><span class="bestseller-badge absolute top-2 left-2"><i class="fas fa-star mr-1"></i>BEST</span></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Green Tea</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Hot/Ice</p><span class="font-orbitron text-pixel-cyan">10K - 12K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="bestseller noncoffee">
+                        <div class="relative"><img src="menu-coffee.jpg" alt="Chocolate" class="w-full h-40 object-cover"><span class="bestseller-badge absolute top-2 left-2"><i class="fas fa-star mr-1"></i>BEST</span></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Chocolate</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Hot/Ice</p><span class="font-orbitron text-pixel-cyan">10K - 15K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="bestseller coffee">
+                        <div class="relative"><img src="menu-coffee.jpg" alt="Kopi Pixel" class="w-full h-40 object-cover"><span class="bestseller-badge absolute top-2 left-2"><i class="fas fa-star mr-1"></i>BEST</span></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Kopi Pixel</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Signature</p><span class="font-orbitron text-pixel-cyan">12K - 15K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="bestseller coffee">
+                        <div class="relative"><img src="menu-coffee.jpg" alt="Kopi Pixel Small" class="w-full h-40 object-cover"><span class="bestseller-badge absolute top-2 left-2"><i class="fas fa-star mr-1"></i>BEST</span></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Kopi Pixel Small</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Ice Only</p><span class="font-orbitron text-pixel-cyan">10K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="coffee">
+                        <div class="relative"><img src="menu-americano.jpg" alt="Americano" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Americano</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Hot/Ice</p><span class="font-orbitron text-pixel-cyan">10K - 12K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="coffee">
+                        <div class="relative"><img src="menu-espresso.jpg" alt="Espresso" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Espresso</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Hot</p><span class="font-orbitron text-pixel-cyan">8K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="bestseller coffee">
+                        <div class="relative"><img src="menu-hazelnut.jpg" alt="Kopi Hazelnut" class="w-full h-40 object-cover"><span class="bestseller-badge absolute top-2 left-2"><i class="fas fa-star mr-1"></i>BEST</span></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Kopi Hazelnut</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Flavored</p><span class="font-orbitron text-pixel-cyan">18K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="bestseller coffee">
+                        <div class="relative"><img src="menu-pandan.jpg" alt="Kopi Pandan" class="w-full h-40 object-cover"><span class="bestseller-badge absolute top-2 left-2"><i class="fas fa-star mr-1"></i>BEST</span></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Kopi Pandan</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Flavored</p><span class="font-orbitron text-pixel-cyan">18K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="coffee">
+                        <div class="relative"><img src="menu-hazelnut.jpg" alt="Kopi Caramel" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Kopi Caramel</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Flavored</p><span class="font-orbitron text-pixel-cyan">18K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="coffee">
+                        <div class="relative"><img src="menu-pandan.jpg" alt="Kopi Kayu Manis" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Kopi Kayu Manis</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Flavored</p><span class="font-orbitron text-pixel-cyan">18K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="coffee">
+                        <div class="relative"><img src="menu-coffee.jpg" alt="Kopi Tiramisu" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Kopi Tiramisu</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Flavored</p><span class="font-orbitron text-pixel-cyan">18K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="bestseller noncoffee">
+                        <div class="relative"><img src="menu-milo.jpg" alt="Milo" class="w-full h-40 object-cover"><span class="bestseller-badge absolute top-2 left-2"><i class="fas fa-star mr-1"></i>BEST</span></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Milo</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Hot/Ice</p><span class="font-orbitron text-pixel-cyan">10K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="noncoffee">
+                        <div class="relative"><img src="menu-greentea.jpg" alt="Lemon Tea" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Lemon Tea</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Hot/Ice</p><span class="font-orbitron text-pixel-cyan">10K - 12K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="noncoffee">
+                        <div class="relative"><img src="menu-thaitea.jpg" alt="Mango Smoothies" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Mango Smoothies</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Ice Blended</p><span class="font-orbitron text-pixel-cyan">15K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="noncoffee">
+                        <div class="relative"><img src="menu-pandan.jpg" alt="Taro" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Taro</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Ice</p><span class="font-orbitron text-pixel-cyan">15K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="noncoffee">
+                        <div class="relative"><img src="menu-greentea.jpg" alt="Teh" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Teh</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Hot/Ice</p><span class="font-orbitron text-pixel-cyan">5K - 8K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="noncoffee">
+                        <div class="relative"><img src="menu-thaitea.jpg" alt="Thai Tea" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Thai Tea</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Hot/Ice</p><span class="font-orbitron text-pixel-cyan">10K - 12K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="noncoffee">
+                        <div class="relative"><img src="menu-milo.jpg" alt="Extrajoss Susu" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Extrajoss Susu</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Ice</p><span class="font-orbitron text-pixel-cyan">10K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="bestseller noncoffee">
+                        <div class="relative"><img src="menu-thaitea.jpg" alt="Teh Tarik" class="w-full h-40 object-cover"><span class="bestseller-badge absolute top-2 left-2"><i class="fas fa-star mr-1"></i>BEST</span></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Teh Tarik</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Hot/Ice</p><span class="font-orbitron text-pixel-cyan">12K - 15K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="snack">
+                        <div class="relative"><img src="menu-snack.jpg" alt="Kentang" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Kentang</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">French Fries</p><span class="font-orbitron text-pixel-cyan">13K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="snack">
+                        <div class="relative"><img src="menu-rotibakar.jpg" alt="Roti Bakar" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Roti Bakar Co-ke</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Toast</p><span class="font-orbitron text-pixel-cyan">15K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="snack">
+                        <div class="relative"><img src="menu-mixplating.jpg" alt="Mix Plating" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Mix Plating</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Assorted</p><span class="font-orbitron text-pixel-cyan">15K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="snack">
+                        <div class="relative"><img src="menu-gohyong.jpg" alt="Gohyong" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Gohyong</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Traditional</p><span class="font-orbitron text-pixel-cyan">20K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="snack">
+                        <div class="relative"><img src="menu-risol.jpg" alt="Risol" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Risol</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Pastry</p><span class="font-orbitron text-pixel-cyan">20K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="snack">
+                        <div class="relative"><img src="menu-pisangnaget.jpg" alt="Pisang Naget" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Pisang Naget</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Banana Nugget</p><span class="font-orbitron text-pixel-cyan">15K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="snack">
+                        <div class="relative"><img src="menu-pisangnaget.jpg" alt="Pisang Sambel" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Pisang Sambel</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Spicy Banana</p><span class="font-orbitron text-pixel-cyan">13K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="snack">
+                        <div class="relative"><img src="menu-mixplating.jpg" alt="Bakwan" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Bakwan</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Vegetable</p><span class="font-orbitron text-pixel-cyan">15K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="food">
+                        <div class="relative"><img src="menu-mie.jpg" alt="Mie Telur Sosis" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Mie Telur Sosis</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Noodles</p><span class="font-orbitron text-pixel-cyan">12K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="food">
+                        <div class="relative"><img src="menu-mie.jpg" alt="Mie Polos" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Mie Polos</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Plain</p><span class="font-orbitron text-pixel-cyan">8K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="food">
+                        <div class="relative"><img src="menu-ayam.jpg" alt="Ayam Penyet" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Ayam Penyet/Bakar</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">+ Tempe + Sup</p><span class="font-orbitron text-pixel-cyan">25K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="food">
+                        <div class="relative"><img src="menu-sate.jpg" alt="Sate Taichan" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Sate Taichan</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Chicken Satay</p><span class="font-orbitron text-pixel-cyan">17K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="food">
+                        <div class="relative"><img src="menu-nasgor.jpg" alt="Nasi Goreng Ayam" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Nasi Goreng Ayam</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Fried Rice</p><span class="font-orbitron text-pixel-cyan">20K</span></div>
+                    </div>
+                    <div class="menu-item card-gaming rounded-xl overflow-hidden" data-category="food">
+                        <div class="relative"><img src="menu-nasgor.jpg" alt="Nasi Goreng Telur" class="w-full h-40 object-cover"></div>
+                        <div class="p-4"><h4 class="font-orbitron font-bold text-white mb-1">Nasi Goreng Telur</h4><p class="font-inter text-xs text-pixel-white/50 mb-3">Fried Rice</p><span class="font-orbitron text-pixel-cyan">15K</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="relative py-20 md:py-32 bg-pixel-charcoal">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <span class="inline-block px-4 py-1 rounded-full bg-pixel-cyan/20 text-pixel-cyan font-inter text-sm mb-4"><i class="fas fa-images mr-2"></i>GALLERY</span>
+                    <h2 class="section-title font-orbitron font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4">MOMEN <span class="text-transparent bg-clip-text bg-gradient-to-r from-pixel-cyan to-pixel-purple">PIXEL</span></h2>
+                    <p class="font-inter text-pixel-white/60 max-w-2xl mx-auto">Lihat suasana dan fasilitas premium di Pixel Cafe & Gaming.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 reveal">
+                    <div class="group relative overflow-hidden rounded-xl cursor-pointer"><img src="gallery-1.jpg" alt="Gaming Lounge" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-pixel-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"><span class="font-orbitron text-white">Gaming Lounge</span></div><div class="absolute inset-0 border-2 border-pixel-purple/0 group-hover:border-pixel-purple/50 rounded-xl transition-all duration-300"></div></div>
+                    <div class="group relative overflow-hidden rounded-xl cursor-pointer md:col-span-2"><img src="gallery-2.jpg" alt="VIP Room" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-pixel-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"><span class="font-orbitron text-white">VIP Room</span></div><div class="absolute inset-0 border-2 border-pixel-cyan/0 group-hover:border-pixel-cyan/50 rounded-xl transition-all duration-300"></div></div>
+                    <div class="group relative overflow-hidden rounded-xl cursor-pointer md:col-span-2"><img src="gallery-3.jpg" alt="PlayStation Setup" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-pixel-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"><span class="font-orbitron text-white">PlayStation Setup</span></div><div class="absolute inset-0 border-2 border-pixel-purple/0 group-hover:border-pixel-purple/50 rounded-xl transition-all duration-300"></div></div>
+                    <div class="group relative overflow-hidden rounded-xl cursor-pointer"><img src="gallery-4.jpg" alt="Food & Drinks" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-pixel-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"><span class="font-orbitron text-white">Food & Drinks</span></div><div class="absolute inset-0 border-2 border-pixel-cyan/0 group-hover:border-pixel-cyan/50 rounded-xl transition-all duration-300"></div></div>
+                </div>
+                <div class="mt-16 reveal">
+                    <div class="text-center mb-8">
+                        <h3 class="font-orbitron text-xl text-white mb-2"><i class="fab fa-instagram text-pixel-purple mr-2"></i>Instagram Gallery</h3>
+                        <a href="https://instagram.com/pixel_cafeandgaming" target="_blank" class="font-inter text-pixel-cyan hover:text-pixel-purple transition-colors">@pixel_cafeandgaming</a>
+                    </div>
+                    <div class="insta-grid grid grid-cols-3 md:grid-cols-6 gap-3">
+                        <div class="aspect-square rounded-lg overflow-hidden"><img src="gallery-1.jpg" alt="IG1" class="w-full h-full object-cover"></div>
+                        <div class="aspect-square rounded-lg overflow-hidden"><img src="gallery-2.jpg" alt="IG2" class="w-full h-full object-cover"></div>
+                        <div class="aspect-square rounded-lg overflow-hidden"><img src="gallery-3.jpg" alt="IG3" class="w-full h-full object-cover"></div>
+                        <div class="aspect-square rounded-lg overflow-hidden"><img src="gallery-4.jpg" alt="IG4" class="w-full h-full object-cover"></div>
+                        <div class="aspect-square rounded-lg overflow-hidden"><img src="menu-coffee.jpg" alt="IG5" class="w-full h-full object-cover"></div>
+                        <div class="aspect-square rounded-lg overflow-hidden"><img src="menu-snack.jpg" alt="IG6" class="w-full h-full object-cover"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="relative py-20 md:py-32 gradient-bg">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <span class="inline-block px-4 py-1 rounded-full bg-pixel-purple/20 text-pixel-purple font-inter text-sm mb-4"><i class="fas fa-map-marker-alt mr-2"></i>LOCATION</span>
+                    <h2 class="section-title font-orbitron font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4">TEMUKAN <span class="text-transparent bg-clip-text bg-gradient-to-r from-pixel-purple to-pixel-cyan">KAMI</span></h2>
+                    <p class="font-inter text-pixel-white/60 max-w-2xl mx-auto">Kunjungi Pixel Cafe & Gaming dan rasakan pengalaman gaming premium di Bone.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="reveal">
+                        <div class="map-container h-96 relative">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.9999999999995!2d120.4667!3d-4.5333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMzInMDAuMCJTIDEyMMKwMjgnMDAuMCJF!5e0!3m2!1sid!2sid!4v1708888888888!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <a href="https://maps.google.com/?q=Pixel+Cafe+Gaming+Bone+Sulawesi+Selatan" target="_blank" class="absolute bottom-4 right-4 btn-primary px-4 py-2 rounded-lg font-orbitron text-white text-sm flex items-center space-x-2 z-10">
+                                <i class="fas fa-external-link-alt"></i><span>Buka di Maps</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="reveal space-y-6">
+                        <div class="card-gaming rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-pixel-purple/20 flex items-center justify-center flex-shrink-0"><i class="fas fa-map-marker-alt text-pixel-purple text-xl"></i></div>
+                                <div class="flex-1">
+                                    <h4 class="font-orbitron font-bold text-white mb-1">Alamat</h4>
+                                    <p class="font-inter text-pixel-white/70 mb-3">PIXEL CAFE AND GAMING<br>Jln. Lapawawoi, Kel. Sigeri, Kec. Tanete Riattang<br>Kab. Bone, Sulawesi Selatan</p>
+                                    <a href="https://maps.google.com/?q=Jln+Lapawawoi+Sigeri+Bone+Sulawesi+Selatan" target="_blank" class="inline-flex items-center space-x-2 text-pixel-cyan hover:text-pixel-purple transition-colors text-sm">
+                                        <i class="fas fa-directions"></i><span>Petunjuk Arah</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-gaming rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-pixel-cyan/20 flex items-center justify-center flex-shrink-0"><i class="fas fa-clock text-pixel-cyan text-xl"></i></div>
+                                <div>
+                                    <h4 class="font-orbitron font-bold text-white mb-1">Jam Operasional</h4>
+                                    <p class="font-inter text-pixel-white/70"><span class="text-pixel-cyan font-orbitron">OPEN</span><br>10:00 AM - 00:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-gaming rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center flex-shrink-0"><i class="fab fa-whatsapp text-green-500 text-xl"></i></div>
+                                <div>
+                                    <h4 class="font-orbitron font-bold text-white mb-1">WhatsApp Booking</h4>
+                                    <p class="font-inter text-pixel-white/70 mb-3">Hubungi kami untuk reservasi seat</p>
+                                    <a href="https://wa.me/6285166073386" target="_blank" class="btn-primary px-6 py-2 rounded-lg font-orbitron text-white text-sm inline-flex items-center space-x-2"><i class="fab fa-whatsapp"></i><span>+62 851-6607-3386</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-gaming rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0"><i class="fab fa-instagram text-white text-xl"></i></div>
+                                <div>
+                                    <h4 class="font-orbitron font-bold text-white mb-1">Instagram</h4>
+                                    <p class="font-inter text-pixel-white/70 mb-3">Follow kami untuk update terbaru</p>
+                                    <a href="https://instagram.com/pixel_cafeandgaming" target="_blank" class="font-inter text-pixel-cyan hover:text-pixel-purple transition-colors">@pixel_cafeandgaming</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 text-center reveal">
+                    <a href="https://wa.me/6285166073386" target="_blank" class="btn-primary px-10 py-4 rounded-full font-orbitron text-white text-lg inline-flex items-center space-x-3"><i class="fab fa-whatsapp text-2xl"></i><span>Reserve via WhatsApp</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="relative py-16 bg-pixel-dark border-t border-pixel-purple/20">
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="neon-divider mb-12"></div>
+                <div class="grid md:grid-cols-4 gap-8 mb-12">
+                    <div class="md:col-span-2">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <img src="pixel-logo.png" alt="Pixel Cafe Logo" class="w-12 h-12 rounded-full">
+                            <div>
+                                <span class="font-orbitron font-bold text-white">PIXEL CAFE</span>
+                                <span class="block font-orbitron text-xs text-pixel-purple">& GAMING</span>
+                            </div>
+                        </div>
+                        <p class="font-inter text-pixel-white/60 mb-4 max-w-md">Markas gamer masa depan di Bone. Console Gaming Lounge premium dengan pengalaman PlayStation terbaik.</p>
+                        <div class="flex space-x-4">
+                            <a href="https://instagram.com/pixel_cafeandgaming" target="_blank" class="w-10 h-10 rounded-full bg-pixel-purple/20 flex items-center justify-center text-pixel-purple hover:bg-pixel-purple hover:text-white transition-all duration-300"><i class="fab fa-instagram"></i></a>
+                            <a href="https://wa.me/6285166073386" target="_blank" class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-orbitron font-bold text-white mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#hero" class="font-inter text-pixel-white/60 hover:text-pixel-cyan transition-colors">Home</a></li>
+                            <li><a href="#seats" class="font-inter text-pixel-white/60 hover:text-pixel-cyan transition-colors">View Seat</a></li>
+                            <li><a href="#rental" class="font-inter text-pixel-white/60 hover:text-pixel-cyan transition-colors">Rental</a></li>
+                            <li><a href="#menu" class="font-inter text-pixel-white/60 hover:text-pixel-cyan transition-colors">Menu</a></li>
+                            <li><a href="#gallery" class="font-inter text-pixel-white/60 hover:text-pixel-cyan transition-colors">Gallery</a></li>
+                            <li><a href="#contact" class="font-inter text-pixel-white/60 hover:text-pixel-cyan transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-orbitron font-bold text-white mb-4">Services</h4>
+                        <ul class="space-y-2">
+                            <li class="font-inter text-pixel-white/60">PS3 Gaming</li>
+                            <li class="font-inter text-pixel-white/60">PS4 Gaming</li>
+                            <li class="font-inter text-pixel-white/60">PS5 VIP Room</li>
+                            <li class="font-inter text-pixel-white/60">Rental Playbox</li>
+                            <li class="font-inter text-pixel-white/60">Food & Beverages</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-line mb-6"></div>
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <p class="font-inter text-sm text-pixel-white/40">&copy; 2024 Pixel Cafe & Gaming. All rights reserved.</p>
+                    <p class="font-inter text-sm text-pixel-white/40 mt-2 md:mt-0"><i class="fas fa-code mr-1"></i> Crafted with passion in Bone</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() { setTimeout(function() { document.getElementById('loading-screen').classList.add('hidden'); }, 1500); });
+        const cursorGlow = document.getElementById('cursor-glow'); let mouseX = 0, mouseY = 0, currentX = 0, currentY = 0;
+        document.addEventListener('mousemove', function(e) { mouseX = e.clientX; mouseY = e.clientY; });
+        function animateCursor() { currentX += (mouseX - currentX) * 0.1; currentY += (mouseY - currentY) * 0.1; cursorGlow.style.left = currentX + 'px'; cursorGlow.style.top = currentY + 'px'; requestAnimationFrame(animateCursor); }
+        animateCursor();
+        
+        const canvas = document.getElementById('particles-canvas'); const ctx = canvas.getContext('2d'); let particles = [];
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+        class Particle { constructor() { this.reset(); } reset() { this.x = Math.random() * canvas.width; this.y = canvas.height + Math.random() * 100; this.size = Math.random() * 3 + 1; this.speedY = Math.random() * 1 + 0.5; this.speedX = (Math.random() - 0.5) * 0.5; this.opacity = Math.random() * 0.5 + 0.2; this.color = Math.random() > 0.5 ? '#BC13FE' : '#00E5FF'; } update() { this.y -= this.speedY; this.x += this.speedX; if (this.y < -10) this.reset(); } draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = this.color; ctx.globalAlpha = this.opacity; ctx.fill(); ctx.globalAlpha = 1; } }
+        for (let i = 0; i < 50; i++) particles.push(new Particle());
+        function animateParticles() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animateParticles); }
+        animateParticles();
+        
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function() { if (window.pageYOffset > 100) { navbar.classList.add('shadow-lg', 'shadow-pixel-purple/10'); } else { navbar.classList.remove('shadow-lg', 'shadow-pixel-purple/10'); } });
+        
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() { document.getElementById('mobile-menu').classList.add('open'); });
+        document.getElementById('close-menu-btn').addEventListener('click', function() { document.getElementById('mobile-menu').classList.remove('open'); });
+        document.querySelectorAll('#mobile-menu a').forEach(link => { link.addEventListener('click', function() { document.getElementById('mobile-menu').classList.remove('open'); }); });
+        
+        const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        
+        document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', function() { const filter = this.dataset.filter; document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active'); b.classList.add('bg-pixel-dark', 'border', 'border-pixel-purple/30', 'text-pixel-white/70'); }); this.classList.add('active'); this.classList.remove('bg-pixel-dark', 'border', 'border-pixel-purple/30', 'text-pixel-white/70'); document.querySelectorAll('.menu-item').forEach(item => { if (filter === 'all' || item.dataset.category.includes(filter)) { item.style.display = 'block'; item.style.animation = 'fadeIn 0.5s ease forwards'; } else { item.style.display = 'none'; } }); }); });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
+        
+        const sections = document.querySelectorAll('section[id]'); const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', function() { let current = ''; sections.forEach(section => { if (pageYOffset >= section.offsetTop - 200) current = section.getAttribute('id'); }); navLinks.forEach(link => { link.classList.remove('text-pixel-cyan'); if (link.getAttribute('href') === '#' + current) link.classList.add('text-pixel-cyan'); }); });
+        
+        document.querySelectorAll('#gallery img').forEach(img => { img.addEventListener('click', function() { const lightbox = document.createElement('div'); lightbox.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4'; lightbox.innerHTML = '<img src="' + this.src + '" alt="' + this.alt + '" class="max-w-full max-h-full rounded-lg"><button class="absolute top-4 right-4 text-white text-2xl hover:text-pixel-cyan"><i class="fas fa-times"></i></button>'; document.body.appendChild(lightbox); lightbox.addEventListener('click', function(e) { if (e.target === lightbox || e.target.tagName === 'BUTTON') lightbox.remove(); }); }); });
+    </script>
+</body>
+</html>
